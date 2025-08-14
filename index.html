@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickForum Mobile</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>QuickForum Mobile</h1>
+    </header>
+    <main>
+        <form action="/add" method="POST" class="post-form">
+            <input type="text" name="title" placeholder="Post title" required>
+            <textarea name="content" placeholder="Your content..." required></textarea>
+            <button type="submit">Post</button>
+        </form>
+        <section class="posts">
+            {% for post in posts %}
+                <article class="post">
+                    <h2>{{ post.title }}</h2>
+                    <p>{{ post.content }}</p>
+                </article>
+            {% endfor %}
+        </section>
+    </main>
+</body>
+</html>
